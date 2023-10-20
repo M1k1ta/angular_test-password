@@ -38,5 +38,4 @@ Node version: 18.17.0
 ## How it Works
 The main components of this project include well-styled strength blocks and a function to determine password strength:
 1. By using the `nth-child` selector, styles are applied to change the background color of the necessary blocks when using an active class.
-2. A function is created to return the password strength. The function uses a strength level value and regular expressions to check for letters, symbols, and numbers in the password. The strength value is incremented based on the presence of each character type. If the password has fewer than 8 characters, a strength of -1 is returned. The current strength is used to change the CSS class using the `classnames` library.
-
+2. A function is created to return the password strength. The function uses a strength level value and regular expressions to check for letters, symbols, and numbers in the password. The strength value is incremented based on the presence of each character type. If the password has fewer than 8 characters, a strength of -1 is returned. The current strength is used to change the CSS class.

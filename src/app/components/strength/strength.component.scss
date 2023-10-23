@@ -1,0 +1,31 @@
+@import '../../../assets/variables';
+
+.strength {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  &__block {
+    width: 30%;
+    height: 20px;
+    border-radius: 3px;
+    background-color: $default-color;
+    transition: background-color $transition-block-color;
+
+    .strength--short &:nth-child(-n + 3) {
+      background-color: $low-color;
+    }
+
+    .strength--low &:first-child {
+      background-color: $low-color;
+    }
+
+    .strength--medium &:nth-child(-n + 2) {
+      background-color: $medium-color;
+    }
+
+    .strength--high &:nth-child(-n + 3) {
+      background-color: $high-color;
+    }
+  }
+}

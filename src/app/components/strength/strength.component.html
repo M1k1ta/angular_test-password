@@ -1,0 +1,13 @@
+<article
+class='strength'
+[ngClass]="{
+  'strength--short': passwordStrength === -1,
+  'strength--low': passwordStrength === 1,
+  'strength--medium': passwordStrength === 2,
+  'strength--high': passwordStrength === 3
+}"
+>
+<div class='strength__block'></div>
+<div class='strength__block'></div>
+<div class='strength__block'></div>
+</article>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { PasswordStrengthService } from 'src/app/services/password-strength.service';
 
 @Component({
   selector: 'app-password-test',
@@ -6,38 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./password-test.component.scss']
 })
 export class PasswordTestComponent {
-  password = '';
+  password = new FormControl('');
   passwordStrength = 0;
 
-  handlePasswordChange = (event: Event) => {
-    const value = (event.target as HTMLInputElement).value;
+  constructor(private passwordStrengthService: PasswordStrengthService) {}
 
-    this.passwordStrength = this.getPasswordStrength(value);
-    this.password = value;
+  ngOnInit() {
+    this.password.valueChanges.subscribe(value => {
+      this.handlePasswordChange(value || '');
+    });
   }
 
-  getPasswordStrength = (password: string) => {
-    let strength = 0;
-    const leters = /[A-Za-z]/;
-    const numbers = /\d/;
-    const symbols = /[^A-Za-z0-9]/;
+  handlePasswordChange(value: string) {
+    const { getPasswordStrength } = this.passwordStrengthService;
 
-    if (password.length < 8 && password.length > 0) {
-      return -1;
-    }
-
-    if (leters.test(password)) {
-      strength++;
-    }
-
-    if (numbers.test(password)) {
-      strength++;
-    }
-
-    if (symbols.test(password)) {
-      strength++;
-    }
-
-    return strength;
+    this.passwordStrength = getPasswordStrength(value);
   }
 }
